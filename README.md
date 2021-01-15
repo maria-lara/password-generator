@@ -8,4 +8,4 @@ In this generator, you can select the password length, uppercase letters, lowerc
 [Click here to view the generator](https://maria-lara.github.io/password-generator/)
 
 # Screenshots
-Homepage ![screenshot of homepage](https://github.com/maria-lara/maria-lara.github.io/blob/main/assets/Screen%20Shot%202021-01-07%20at%206.24.49%20PM.png)
+Homepage ![screenshot of homepage](https://github.com/maria-lara/password-generator/blob/main/Screen%20Shot%202021-01-14%20at%209.48.53%20PM.png)
