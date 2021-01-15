@@ -1,7 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
 
-const special = "!#$()*,-./:;<=>?@[]^_`{|}~";
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -50,7 +49,8 @@ function generatePassword() {
         return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
       },
       selectSpecialChar: function (){
-        return special[Math.floor(Math.random() * special.legnth)];
+        const specialSelected = '!#$()*,-./:;<=>?@[]^_`{|}~';
+        return specialSelected[Math.floor(Math.random() * specialSelected.length)];
       }
   };
 
@@ -68,20 +68,19 @@ function generatePassword() {
       specialSelected = selectFunction.selectSpecialChar();
     }
 
-
     //Loop to create random password
     var passwordGenerated = "";
 
     for (let i = 0; i < pwlength; i++){
       var randomPassword = Math.floor(Math.random() * pwlength.length);
       passwordGenerated += randomPassword;
-     }
-    
-     // Adds the value selected to the variable
-     passwordGenerated += lowerSelected;
-     passwordGenerated += upperSelected;
-     passwordGenerated += numericSelected;
-     passwordGenerated += specialSelected;
+    }
+
+    // Adds the value selected to the variable
+    passwordGenerated += lowerSelected;
+    passwordGenerated += upperSelected;
+    passwordGenerated += numericSelected;
+    passwordGenerated += specialSelected;
 
      // Stop function after password is generated
      return passwordGenerated;
