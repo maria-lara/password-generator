@@ -9,9 +9,8 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
-
+  // Add event listener to generate button
+  generateBtn.addEventListener('click', writePassword);
 
 // Questions to get password characters
 function generatePassword() {
@@ -30,13 +29,8 @@ function generatePassword() {
     var numericChar = confirm("Please confirm if you would like to use numbers in your password.");
     var specialChar = confirm("Please confirm if you would like to use special characters (such as !, ?, or *) in your password.");
 
-    // Begin with empty string for each type of character that gets generated
-    var lowerSelected = "";
-    var upperSelected = "";
-    var numericSelected = "";
-    var specialSelected = "";
 
-    // Function variable that includes each funtion to generate a random character (for each type of character)
+    // Function variable that includes each funtion to generate a random character (for each type of character) - values grabbed from the ASCII chart
     var selectFunction = {
       
       selectLowerChar: function(){
@@ -48,42 +42,32 @@ function generatePassword() {
       selectNumericChar: function (){
         return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
       },
+      // List the options for special characters (provided in the HW README file) before randomly generating
       selectSpecialChar: function (){
         const specialSelected = '!#$()*,-./:;<=>?@[]^_`{|}~';
         return specialSelected[Math.floor(Math.random() * specialSelected.length)];
       }
   };
 
-    // Now define what the characters will be when the function runs to select it at random
-    if (lowerChar === true){
-      lowerSelected = selectFunction.selectLowerChar();
-    }
-    if (upperChar === true){
-      upperSelected = selectFunction.selectUpperChar();
-    }
-    if (numericChar === true){
-      numericSelected = selectFunction.selectNumericChar();
-    }
-    if (specialChar === true){
-      specialSelected = selectFunction.selectSpecialChar();
-    }
-
-    //Loop to create random password
+    //Clear out the loop before running
     var passwordGenerated = "";
-
-    for (let i = 0; i < pwlength; i++){
-      var randomPassword = Math.floor(Math.random() * pwlength.length);
-      passwordGenerated += randomPassword;
+    for (let i = 0; i < pwlength; i ++){
+      if (lowerChar === true){
+        passwordGenerated += selectFunction.selectLowerChar();
+      }
+      if (upperChar === true){
+        passwordGenerated += selectFunction.selectUpperChar();
+      }
+      if (numericChar === true){
+        passwordGenerated += selectFunction.selectNumericChar();
+      }
+      if (specialChar === true){
+        passwordGenerated += selectFunction.selectSpecialChar();
+      }
     }
-
-    // Adds the value selected to the variable
-    passwordGenerated += lowerSelected;
-    passwordGenerated += upperSelected;
-    passwordGenerated += numericSelected;
-    passwordGenerated += specialSelected;
-
+   
      // Stop function after password is generated
-     return passwordGenerated;
+     return passwordGenerated.slice(0, pwlength);
 }
 
 
